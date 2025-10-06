@@ -65,8 +65,6 @@ while True:
     while not game_ended():
         move = input('Row-Col: ')
         row, col = map(lambda x: int(x) - 1, move.split('-'))
-    else:
-        print('no '-' avalible')
         char = ['X', 'O'][turn]
         if 0 <= row <= 2 and 0 <= col <= 2:
             if board[row][col] == ' ':
@@ -78,11 +76,11 @@ while True:
                 print('Place is already taken')
         else:
             print("Row and column must be within 1 to 3")
-    
-    if who_won != None:
-        print('Winner:', who_won)
     else:
-        print('Board is full')
+        if who_won != None:
+            print('Winner:', who_won)
+        else:
+            print('Board is full')
 
     cmd = input("Enter 'R' to restart and 'C' to close the game.\n")
     while not (cmd == 'C' or cmd == 'R'):
