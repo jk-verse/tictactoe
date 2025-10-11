@@ -64,7 +64,11 @@ while True:
     turn = 0
     while not game_ended():
         move = input('Row-Col: ')
-        row, col = map(lambda x: int(x) - 1, move.split('-'))
+        try:
+            row, col = map(lambda x: int(x) - 1, move.split('-'))
+        except ValueError:
+            print("Wrong input format. Use Row-Col format (e.g., 1-3 for Row 1 Column 3)")
+            continue
         char = ['X', 'O'][turn]
         if 0 <= row <= 2 and 0 <= col <= 2:
             if board[row][col] == ' ':
